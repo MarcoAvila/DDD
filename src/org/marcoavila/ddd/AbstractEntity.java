@@ -67,6 +67,15 @@ public abstract class AbstractEntity<ID> extends AbstractInvariantsOwner impleme
 	
 	
 	
+	protected boolean falseWithMessage(String message) {
+		this.message = message;
+		return false;
+	}
+	
+	
+	
+	
+	
 	
 	
 	
