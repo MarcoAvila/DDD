@@ -7,7 +7,7 @@ package org.marcoavila.ddd;
 
 public abstract class AbstractInvariantsOwner implements InvariantsOwner {
 
-	private String message;
+	protected String message;
 
 	
 	
