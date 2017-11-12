@@ -11,6 +11,10 @@ import org.marcoavila.ddd.repository.Repository;
 import org.marcoavila.ddd.util.DomainUtil;
 import org.marcoavila.ddd.util.ReflectionUtil;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class UnitOfWorkImpl implements UnitOfWork {
 
 	private List<ObservedAggregateRoot> roots = new ArrayList<>();
