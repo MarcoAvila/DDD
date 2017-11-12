@@ -58,7 +58,7 @@ public abstract class AbstractEntity<ID> extends AbstractInvariantsOwner impleme
 	protected String invariantsHeader() {
 		
 		return this.getClass().getSimpleName() +
-				(id != null ? " id " + id : " <sem id>") + ": ";
+				(id != null ? " id " + id : " <no id>") + ": ";
 	}
 
 
