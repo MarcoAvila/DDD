@@ -4,7 +4,7 @@ import org.marcoavila.ddd.Entity;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 public interface Repository <EN extends Entity<ID>, ID> {
 	
