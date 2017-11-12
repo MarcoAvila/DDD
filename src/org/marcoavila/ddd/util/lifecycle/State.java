@@ -5,9 +5,8 @@ import java.util.List;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
-
 public class State<STATE> {
 
 	private int id;
