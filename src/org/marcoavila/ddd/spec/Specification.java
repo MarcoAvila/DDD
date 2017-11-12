@@ -2,7 +2,7 @@ package org.marcoavila.ddd.spec;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 
 public interface Specification<C> {
