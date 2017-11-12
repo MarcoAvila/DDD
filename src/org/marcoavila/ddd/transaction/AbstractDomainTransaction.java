@@ -4,6 +4,10 @@ import org.marcoavila.ddd.Entity;
 import org.marcoavila.ddd.facade.BaseReturn;
 import org.marcoavila.ddd.util.DomainUtil;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public abstract class AbstractDomainTransaction<AGGREGATE extends Entity<?>> implements DomainTransaction<AGGREGATE> {
 
 	private String message = "";
