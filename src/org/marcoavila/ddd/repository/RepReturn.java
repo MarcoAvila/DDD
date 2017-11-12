@@ -8,7 +8,7 @@ import org.marcoavila.ddd.util.DomainUtil;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 
 public class RepReturn<EN extends Entity<?>> implements Serializable {
