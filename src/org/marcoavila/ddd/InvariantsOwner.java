@@ -2,7 +2,7 @@ package org.marcoavila.ddd;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 public interface InvariantsOwner {
 	
