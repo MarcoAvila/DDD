@@ -10,7 +10,10 @@ import org.marcoavila.ddd.Entity;
 
 /**
  * 
- * @author marco-souza
+/**
+ * 
+ * @author Marco Avila
+ */
  */
 
 public class DomainUtil {
