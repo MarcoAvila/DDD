@@ -2,9 +2,8 @@ package org.marcoavila.ddd.util.lifecycle;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
-
 public interface LifeCycleBuilder<STATE> {
 
 	public void addWildCard(STATE state);
