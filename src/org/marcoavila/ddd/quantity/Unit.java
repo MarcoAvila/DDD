@@ -1,5 +1,9 @@
 package org.marcoavila.ddd.quantity;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public interface Unit {
 
 	public String code();
