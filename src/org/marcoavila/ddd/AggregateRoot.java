@@ -6,6 +6,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+*
+* @author Marco Avila
+*/
 @Documented
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.TYPE }) 
