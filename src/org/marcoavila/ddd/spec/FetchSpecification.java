@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 
 public interface FetchSpecification <FILTER, C> {
