@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 
 public class DatesUtil {
