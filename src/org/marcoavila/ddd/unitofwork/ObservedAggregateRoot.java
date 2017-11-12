@@ -3,6 +3,10 @@ package org.marcoavila.ddd.unitofwork;
 import org.marcoavila.ddd.Entity;
 import org.marcoavila.ddd.util.DomainUtil;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class ObservedAggregateRoot {
 
 	private final Entity<?> entity;
