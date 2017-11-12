@@ -9,7 +9,7 @@ import org.marcoavila.ddd.util.ExceptionUtil;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 
 public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements Repository<EN, ID> {
