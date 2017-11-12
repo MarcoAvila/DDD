@@ -2,7 +2,7 @@ package org.marcoavila.ddd.util.lifecycle;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 
 public interface LifeCycle<STATE> {
