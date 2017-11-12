@@ -2,7 +2,10 @@ package org.marcoavila.ddd.quantity;
 
 import org.marcoavila.ddd.util.Log;
 
-
+/**
+ * 
+ * @author Marco Avila
+ */
 public final class QuantityVO {
 
 	private final float amount;
