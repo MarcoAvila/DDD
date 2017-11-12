@@ -4,6 +4,10 @@ import java.util.List;
 
 import org.marcoavila.ddd.Entity;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public interface UnitOfWork {
 	
 	public <EN extends Entity<?>> EN find(EN persistedEntity);
