@@ -21,7 +21,7 @@ public abstract class AbstractInvariantsOwner implements InvariantsOwner {
 
 	
 	@Override
-	public final String invariantsMessage() {
+	public final String message() {
 		
 		return message;
 	}
