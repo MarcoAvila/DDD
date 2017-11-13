@@ -4,7 +4,7 @@ import org.marcoavila.ddd.spec.Specification;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 public class AndSpecification<T> extends AbstractSpecification<T> {
 
