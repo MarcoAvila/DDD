@@ -1,7 +1,8 @@
 package org.marcoavila.ddd;
 
 /**
- * 
+ * Base class for Entity implementation, implements equals and hash code for the id property.
+ *
  * @author Marco Avila
  */
 
