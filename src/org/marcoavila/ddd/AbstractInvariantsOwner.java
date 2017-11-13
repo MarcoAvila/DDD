@@ -1,7 +1,8 @@
 package org.marcoavila.ddd;
 
 /**
- * 
+ * Base class for invariants owner implementation, holds the message.
+ *
  * @author Marco Avila
  */
 
