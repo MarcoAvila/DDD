@@ -2,6 +2,10 @@ package com.procergs.ddd.test.spec;
 
 import com.procergs.ddd.spec.impl.AbstractSpecification;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class SingleCharSpec extends AbstractSpecification<String> {
 
 	
