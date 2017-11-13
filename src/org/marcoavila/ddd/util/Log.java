@@ -36,7 +36,7 @@ public class Log {
 
 	
 	
-	public static void printRaw(Object o){		
+	public static void printSpace(Object o){		
 		
 		System.out.print(o + " ");
 	}
@@ -55,7 +55,7 @@ public class Log {
 		String s = o.toString().replaceAll("<b>", "")
 							   .replaceAll("</b>", "");
 		
-		System.out.println(s);
+		System.out.print(s);
 	}
 	
 	
