@@ -7,6 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+* Annotation that represents the aggregate root concept.
 *
 * @author Marco Avila
 */
