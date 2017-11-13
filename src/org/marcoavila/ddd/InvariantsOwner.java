@@ -5,7 +5,7 @@ package org.marcoavila.ddd;
  *
  * @author Marco Avila
  */
-public interface InvariantsOwner {
+public interface InvariantsOwner extends Serializable {
 	
 	public Boolean checkInvariants();	
 	
