@@ -8,5 +8,5 @@ public interface InvariantsOwner {
 	
 	public Boolean checkInvariants();	
 	
-	public String invariantsMessage();	
+	public String message();	
 }
