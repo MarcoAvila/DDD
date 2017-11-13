@@ -88,7 +88,7 @@ public abstract class AbstractDomainTransaction<AGGREGATE extends Entity<?>> imp
 		//Invariants
 		if (entity != null &&
 		   !entity.checkInvariants()) 
-			return falseWithMessage("PRE-TRANSCTION: " + entity.invariantsMessage() );	
+			return falseWithMessage("PRE-TRANSCTION: " + entity.message() );	
 		
 		return preConditionsImpl(entity);
 	}
@@ -114,7 +114,7 @@ public abstract class AbstractDomainTransaction<AGGREGATE extends Entity<?>> imp
 
 		//Invariants
 		if (!entity.checkInvariants())
-			return falseWithMessage("POST-TRANSACTION: " + entity.invariantsMessage() );	
+			return falseWithMessage("POST-TRANSACTION: " + entity.message() );	
 		
 		return true;
 	}
