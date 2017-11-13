@@ -1,6 +1,9 @@
 package org.marcoavila.ddd.facade;
 
-
+/**
+ * 
+ * @author Marco Avila
+ */
 public abstract class AbstractFacade {
 
 	private String errorMessage;
