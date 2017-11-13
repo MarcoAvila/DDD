@@ -4,9 +4,8 @@ import org.marcoavila.ddd.spec.Specification;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
-
 public abstract class AbstractSpecification<C> implements Specification<C> {
 	
 	protected Specification<C> unsatisfiedSpec;
