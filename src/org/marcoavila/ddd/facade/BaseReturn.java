@@ -2,6 +2,10 @@ package org.marcoavila.ddd.facade;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class BaseReturn<R> implements Serializable {
 
     private static final long serialVersionUID = 1L;
