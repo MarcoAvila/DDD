@@ -4,9 +4,8 @@ import java.lang.reflect.Constructor;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
-
 public class InstantiationUtil {
 
 	
