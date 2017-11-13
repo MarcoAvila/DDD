@@ -2,9 +2,8 @@ package org.marcoavila.ddd.util;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
-
 public class ValidationUtil {
 
 	
