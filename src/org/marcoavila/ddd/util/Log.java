@@ -3,6 +3,10 @@ package org.marcoavila.ddd.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class Log {
 
 	
