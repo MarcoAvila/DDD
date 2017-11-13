@@ -1,5 +1,9 @@
 package org.marcoavila.ddd.util;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class StringsUtil {
 
 	
@@ -63,6 +67,21 @@ public class StringsUtil {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+
+	public static String firstName(String fullName) {
+
+		int i = fullName.indexOf(" ");		
+		if (i < 0)
+			return fullName;
+		
+		return fullName.substring(0, i);
+	}
 	
 	
 	
