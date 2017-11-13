@@ -39,7 +39,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 
 			//Invariants
 			if (!entity.checkInvariants()) 		
-				return failure( entity.invariantsMessage() );
+				return failure( entity.message() );
 			
 			//AggregateRoot
 			if (!DomainUtil.aggregateRoot(entity))
@@ -89,7 +89,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 
 		//Invariants
 		if (!entity.checkInvariants())
-			return failure( entity.invariantsMessage() );
+			return failure( entity.message() );
 
 		//AggregateRoot
 		if (!DomainUtil.aggregateRoot(entity))
@@ -142,7 +142,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 
 		//Invariants
 		if (!entity.checkInvariants())
-			return failure( entity.invariantsMessage() );
+			return failure( entity.message() );
 
 		//AggregateRoot
 		if (!DomainUtil.aggregateRoot(entity))
@@ -253,7 +253,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 	protected final RepReturn<EN> success(EN entity) {
 
 		if (!entity.checkInvariants())
-			return failure( entity.invariantsMessage() );		
+			return failure( entity.message() );		
 		
 		return new RepReturn<EN>(true, entity);
 	}
@@ -267,7 +267,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 			InvariantsOwner io = (InvariantsOwner)valueObject;
 			
 			if (!io.checkInvariants() )
-				return failure( io.invariantsMessage() );		
+				return failure( io.message() );		
 		}
 		
 		return new RepReturn<EN>(true, valueObject);
@@ -279,7 +279,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 		
 		for (EN e : entities)
 			if (!e.checkInvariants())
-				return failure( e.invariantsMessage() );		
+				return failure( e.message() );		
 		
 		return new RepReturn<EN>(true, entities);
 	}
