@@ -1,9 +1,8 @@
 package org.marcoavila.ddd.spec.impl;
 
-
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
 public class NullAndSpec<T> extends AbstractSpecification<T> {
 
