@@ -1,5 +1,9 @@
 package org.marcoavila.ddd.quantity;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class UnitHourVO implements Unit{
 
 	@Override
