@@ -5,6 +5,10 @@ import org.junit.Test;
 
 import com.procergs.ddd.spec.Specification;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class TestSpecUnsatisfied {
 
 	
