@@ -5,9 +5,8 @@ import java.util.List;
 
 /**
  * 
- * @author marco-souza
+ * @author Marco Avila
  */
-
 public class LifeCycleBuilderImpl<STATE> implements LifeCycleBuilder<STATE> {
 		
 	private List< State<STATE> > states;
