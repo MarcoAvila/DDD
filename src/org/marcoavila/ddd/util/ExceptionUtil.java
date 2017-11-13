@@ -1,5 +1,9 @@
 package org.marcoavila.ddd.util;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class ExceptionUtil {
 
 	
