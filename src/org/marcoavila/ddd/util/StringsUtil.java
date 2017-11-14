@@ -71,6 +71,19 @@ public class StringsUtil {
 	
 	
 	
+	public static String times(String string, int times) {
+		StringBuffer b = new StringBuffer();
+		for (int i=0; i<times;i++)
+			b.append(string);
+		return b.toString();
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 
