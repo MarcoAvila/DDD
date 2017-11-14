@@ -35,8 +35,8 @@ public class TestLifeCycle {
     @Before
 	public void setUp() {
 
-    	Log.print("\nTesting LifeCycle...");
-    	Log.print("....................\n");
+    	Log.printLn("\nTesting LifeCycle...");
+    	Log.printLn("....................\n");
 	}
 	
 	
@@ -57,7 +57,7 @@ public class TestLifeCycle {
 	@Test
 	public void lifeCycleADM() {
 
-    	Log.print("lifeCycleADM():\n");
+    	Log.printLn("lifeCycleADM():\n");
     	
 		LifeCycleBuilder<TreatmentState> b = new LifeCycleBuilderImpl<>();
 		
@@ -84,7 +84,7 @@ public class TestLifeCycle {
 				
 		LifeCycle<TreatmentState> cv = b.build();
 		
-		Log.print( cv.toString() );
+		Log.printLn( cv.toString() );
 		
 		//Test
 		Assert.assertTrue( cv.canBirth(AAT) );
@@ -121,7 +121,7 @@ public class TestLifeCycle {
 		Assert.assertTrue( cv.canDoTransitionTo(ENC) );
 		cv.doTransitionTo(ENC);
 		
-		Log.print( "id: " + cv.getStateId() );
+		Log.printLn( "id: " + cv.getStateId() );
 	}
 	
 	
@@ -142,7 +142,7 @@ public class TestLifeCycle {
 	@Test
 	public void lifeCycleADMRestore() {
 
-    	Log.print("lifeCycleADMRestore():\n");
+    	Log.printLn("lifeCycleADMRestore():\n");
     	
 		LifeCycleBuilder<TreatmentState> b = new LifeCycleBuilderImpl<>();
 		
@@ -169,7 +169,7 @@ public class TestLifeCycle {
 				
 		LifeCycle<TreatmentState> cv = b.build();
 		
-		Log.print( cv.toString());
+		Log.printLn( cv.toString());
 		
 		//Test
 		Assert.assertTrue( cv.unborn() );
@@ -182,7 +182,7 @@ public class TestLifeCycle {
 		Assert.assertTrue( cv.canDoTransitionTo(SUS) );
 		cv.doTransitionTo(SUS);
 		
-		Log.print( "id: " + cv.getStateId() );
+		Log.printLn( "id: " + cv.getStateId() );
 	}
 	
 	
@@ -203,7 +203,7 @@ public class TestLifeCycle {
 	@Test
 	public void lifeCycleJUD() {
 		
-    	Log.print("lifeCycleJUD():\n");
+    	Log.printLn("lifeCycleJUD():\n");
     	
 		LifeCycleBuilder<SitTrat> b = new LifeCycleBuilderImpl<SitTrat>();
 		
@@ -234,7 +234,7 @@ public class TestLifeCycle {
 	@Test
 	public void testBirth() {
 
-    	Log.print("testBirth():\n");
+    	Log.printLn("testBirth():\n");
     	
 		LifeCycleBuilder<TreatmentState> b = new LifeCycleBuilderImpl<TreatmentState>();
 		
@@ -251,7 +251,7 @@ public class TestLifeCycle {
 		
 		LifeCycle<TreatmentState> lc = b.build();
 		
-		Log.print( lc.toString());
+		Log.printLn( lc.toString());
 	}
 	
 	
@@ -270,7 +270,7 @@ public class TestLifeCycle {
 	@Test
 	public void testBirth2() {
 
-    	Log.print("testBirth2():\n");
+    	Log.printLn("testBirth2():\n");
     	
 		LifeCycleBuilder<TreatmentState> b = new LifeCycleBuilderImpl<TreatmentState>();
 		
@@ -294,7 +294,7 @@ public class TestLifeCycle {
 				
 		LifeCycle<TreatmentState> lc = b.build();
 		
-		Log.print( lc.toString());
+		Log.printLn( lc.toString());
 	}
 	
 	
