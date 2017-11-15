@@ -19,7 +19,7 @@ public abstract class AbstractValueObject extends AbstractInvariantsOwner implem
 
 	@Override
 	public Boolean checkInvariants() {
-		throw new IllegalStateException("checkInvariants() NOT IMPLEMENTED on this value object!");		
+		throw new IllegalStateException("checkInvariants() NOT IMPLEMENTED on this Value Object!");		
 	}
 
 
