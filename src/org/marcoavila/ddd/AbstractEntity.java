@@ -5,7 +5,6 @@ package org.marcoavila.ddd;
  *
  * @author Marco Avila
  */
-
 public abstract class AbstractEntity<ID> extends AbstractInvariantsOwner implements Entity<ID> {
 
 	private ID id;
