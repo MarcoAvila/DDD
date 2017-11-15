@@ -7,7 +7,7 @@ package org.marcoavila.ddd;
  *
  * @author Marco Avila
  */
-public abstract class AbstractValueObject extends AbstractInvariantsOwner {
+public abstract class AbstractValueObject extends AbstractInvariantsOwner implements ValueObject {
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,12 +40,7 @@ public abstract class AbstractValueObject extends AbstractInvariantsOwner {
 	
 	
 	
-	
-	
-	
-	protected abstract boolean valueEquals(AbstractValueObject that);
-	
-	
+		
 	
 	
 }
