@@ -30,7 +30,7 @@ public abstract class AbstractValueObject extends AbstractInvariantsOwner {
 	
 
 	@Override
-	public boolean equals(Object obj) {
+	public final boolean equals(Object obj) {
 		if (obj == null ||
 			(!obj.getClass().equals(this.getClass())) ||
 			!(obj instanceof AbstractValueObject))
