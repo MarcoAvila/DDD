@@ -5,8 +5,8 @@ package org.marcoavila.ddd;
  *
  * @author Marco Avila
  */
-public interface ValueObject<T> extends InvariantsOwner {
+public interface ValueObject<VO> extends InvariantsOwner {
 
-	public boolean valueEquals(T that);
+	public boolean valueEquals(VO that);
 		
 }
