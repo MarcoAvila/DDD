@@ -19,7 +19,7 @@ public abstract class AbstractValueObject<VO> extends AbstractInvariantsOwner im
 
 	@Override
 	public Boolean checkInvariants() {
-		throw new IllegalStateException("checkInvariants() NOT IMPLEMENTED on this Value Object!");		
+		throw new IllegalStateException("checkInvariants() NOT IMPLEMENTED on this Value Object! " + this.getClass().getName());		
 	}
 
 
