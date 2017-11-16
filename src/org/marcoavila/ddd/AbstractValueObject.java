@@ -3,7 +3,7 @@ package org.marcoavila.ddd;
 /**
  * Abstraction that represents a Domain Value Object. 
  * 
- * Enforces the equality verification. 
+ * Enforces the equality verification and enable invariants checking.
  *
  * @author Marco Avila
  */
