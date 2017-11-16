@@ -7,7 +7,7 @@ package org.marcoavila.ddd;
  *
  * @author Marco Avila
  */
-public abstract class AbstractValueObject extends AbstractInvariantsOwner implements ValueObject {
+public abstract class AbstractValueObject<VO> extends AbstractInvariantsOwner implements ValueObject<VO> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,12 +30,12 @@ public abstract class AbstractValueObject extends AbstractInvariantsOwner implem
 	
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public final boolean equals(Object obj) {
 		if (obj == null ||
-			(!obj.getClass().equals(this.getClass())) ||
-			!(obj instanceof AbstractValueObject))
+		   !obj.getClass().equals(this.getClass()))
 			return false;
-		return valueEquals( (AbstractValueObject)obj );
+		return valueEquals( (VO)obj );
 	}
 	
 	
