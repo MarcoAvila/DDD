@@ -8,10 +8,10 @@ import org.marcoavila.ddd.util.DomainUtil;
 import org.marcoavila.ddd.util.ExceptionUtil;
 
 /**
- * 
+ * Base class for Repository implementation, accept only aggregate roots and invariants checked entities.
+ *
  * @author Marco Avila
  */
-
 public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements Repository<EN, ID> {
 
 	
