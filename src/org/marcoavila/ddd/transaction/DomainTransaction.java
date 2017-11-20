@@ -4,7 +4,8 @@ import org.marcoavila.ddd.Entity;
 import org.marcoavila.ddd.facade.BaseReturn;
 
 /**
- * 
+ * Abstraction that represents an Domain transaction. 
+ *
  * @author Marco Avila
  */
 public interface DomainTransaction<AGGREGATE extends Entity<?>> {
