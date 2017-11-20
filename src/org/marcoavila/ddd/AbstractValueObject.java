@@ -1,9 +1,8 @@
 package org.marcoavila.ddd;
 
 /**
- * Abstraction that represents a Domain Value Object. 
- * 
- * Enforces the equality verification and enable invariants checking.
+ * Base class for Value Object implementation, makes the equals implementation mandatory,
+ * but not invariants checking.
  *
  * @author Marco Avila
  */
@@ -19,7 +18,7 @@ public abstract class AbstractValueObject<VO> extends AbstractInvariantsOwner im
 
 	@Override
 	public Boolean checkInvariants() {
-		throw new IllegalStateException("checkInvariants() NOT IMPLEMENTED on this Value Object! " + this.getClass().getName());		
+		return true;	
 	}
 
 
