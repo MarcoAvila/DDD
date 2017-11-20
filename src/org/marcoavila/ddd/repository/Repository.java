@@ -3,7 +3,10 @@ package org.marcoavila.ddd.repository;
 import org.marcoavila.ddd.Entity;
 
 /**
- * 
+ * Abstraction that represents an Domain Model Repository. 
+ *
+ * Declare collection like operations. 
+ *
  * @author Marco Avila
  */
 public interface Repository <EN extends Entity<ID>, ID> {
