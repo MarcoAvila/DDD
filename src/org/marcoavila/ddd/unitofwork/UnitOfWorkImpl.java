@@ -12,7 +12,8 @@ import org.marcoavila.ddd.util.DomainUtil;
 import org.marcoavila.ddd.util.ReflectionUtil;
 
 /**
- * 
+ * Sample implementation for a persistence Unit of Work. 
+ *
  * @author Marco Avila
  */
 public class UnitOfWorkImpl implements UnitOfWork {
