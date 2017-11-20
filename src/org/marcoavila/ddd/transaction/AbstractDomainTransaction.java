@@ -5,7 +5,10 @@ import org.marcoavila.ddd.facade.BaseReturn;
 import org.marcoavila.ddd.util.DomainUtil;
 
 /**
- * 
+ * Base class for transaction implementation, accept only aggregate roots and invariants checked entities.
+ *
+ * Enforces pre conditions concept.
+ *
  * @author Marco Avila
  */
 public abstract class AbstractDomainTransaction<AGGREGATE extends Entity<?>> implements DomainTransaction<AGGREGATE> {
