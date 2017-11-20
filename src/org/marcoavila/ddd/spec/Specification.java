@@ -1,10 +1,12 @@
 package org.marcoavila.ddd.spec;
 
 /**
- * 
+ * Abstraction that represents an Domain Specification. 
+ *
+ * Declare logical operators between specifications. 
+ *
  * @author Marco Avila
  */
-
 public interface Specification<C> {
 
 	public boolean isSatisfiedBy(C candidate);
