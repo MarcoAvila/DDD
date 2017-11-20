@@ -5,7 +5,8 @@ import java.util.List;
 import org.marcoavila.ddd.Entity;
 
 /**
- * 
+ * Abstraction that represents an persistence Unit of Work.
+ *
  * @author Marco Avila
  */
 public interface UnitOfWork {
