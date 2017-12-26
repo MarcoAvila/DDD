@@ -3,6 +3,10 @@ package org.marcoavila.ddd.quantity;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 
+ * @author Marco Avila
+ */
 public class GenericUnit implements Unit {
 
 	private final String code;
