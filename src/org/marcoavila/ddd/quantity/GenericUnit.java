@@ -1,4 +1,4 @@
-package com.procergs.ddd.quantity;
+package org.marcoavila.ddd.quantity;
 
 import java.util.HashMap;
 import java.util.Map;
