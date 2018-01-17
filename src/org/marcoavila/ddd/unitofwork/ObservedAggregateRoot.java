@@ -3,10 +3,6 @@ package org.marcoavila.ddd.unitofwork;
 import org.marcoavila.ddd.Entity;
 import org.marcoavila.ddd.util.DomainUtil;
 
-/**
- * 
- * @author Marco Avila
- */
 public class ObservedAggregateRoot {
 
 	private final Entity<?> entity;
@@ -16,6 +12,8 @@ public class ObservedAggregateRoot {
 	private boolean markedToRemove = false;
 	
 	private boolean created = false;
+
+	private boolean dirty = false;
 	
 	
 	
@@ -35,7 +33,13 @@ public class ObservedAggregateRoot {
 	
 	
 	
+
 	
+	public boolean hasId() {
+		return entity.getId() != null;
+	}
+		
+
 	
 	public boolean noId() {
 		return entity.getId() == null;
@@ -44,7 +48,7 @@ public class ObservedAggregateRoot {
 
 
 	public boolean changed() {
-		return hashCode != entity.hashCode();
+		return hashCode != entity.hashCode() || dirty;
 	}
 	
 	
@@ -62,28 +66,22 @@ public class ObservedAggregateRoot {
 		markedToRemove = true;
 	}
 
-
 	public boolean isMarkedToRemove() {
 		return markedToRemove;
 	}
 
-
+	public void markDirty() {
+		dirty = true;
+		created = false;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
+	public boolean isDirty() {
+		return dirty;
+	}
 
 	public void markCreated() {
 		created = true;
 	}
-
-
 
 	public boolean isCreated() {
 		return created;
@@ -91,7 +89,6 @@ public class ObservedAggregateRoot {
 
 
 
-	
 	
 	
 	

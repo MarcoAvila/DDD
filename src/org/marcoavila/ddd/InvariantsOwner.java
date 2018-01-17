@@ -1,5 +1,7 @@
 package org.marcoavila.ddd;
 
+import java.io.Serializable;
+
 /**
  * Abstraction that represents invariants checking capability. 
  *

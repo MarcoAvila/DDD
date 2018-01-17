@@ -3,8 +3,8 @@ package org.marcoavila.ddd.test.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.procergs.ddd.Entity;
-import com.procergs.ddd.repository.AbstractRepository;
+import org.marcoavila.ddd.Entity;
+import org.marcoavila.ddd.repository.AbstractRepository;
 
 public abstract class MemoryREP<EN extends Entity<ID>, ID> extends AbstractRepository<EN, ID> {
 	

@@ -4,11 +4,6 @@ import java.util.List;
 
 import org.marcoavila.ddd.Entity;
 
-/**
- * Abstraction that represents an persistence Unit of Work.
- *
- * @author Marco Avila
- */
 public interface UnitOfWork {
 	
 	public <EN extends Entity<?>> EN find(EN persistedEntity);
@@ -19,5 +14,7 @@ public interface UnitOfWork {
 	public void remove(Entity<?> entity);
 	
 	public boolean commit();	
+	
+	public void printChangesToCommit();
 	public String message();	
 }

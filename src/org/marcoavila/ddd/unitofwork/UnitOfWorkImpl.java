@@ -9,13 +9,9 @@ import org.marcoavila.ddd.Entity;
 import org.marcoavila.ddd.repository.RepReturn;
 import org.marcoavila.ddd.repository.Repository;
 import org.marcoavila.ddd.util.DomainUtil;
+import org.marcoavila.ddd.util.Log;
 import org.marcoavila.ddd.util.ReflectionUtil;
 
-/**
- * Sample implementation for a persistence Unit of Work. 
- *
- * @author Marco Avila
- */
 public class UnitOfWorkImpl implements UnitOfWork {
 
 	private List<ObservedAggregateRoot> roots = new ArrayList<>();
@@ -128,6 +124,7 @@ public class UnitOfWorkImpl implements UnitOfWork {
 	
 	@Override
 	public  <EN extends Entity<?>> void addAll(List<EN> entities) {
+		
 		for (EN e : entities)
 			add(e);		
 	}
@@ -189,13 +186,13 @@ public class UnitOfWorkImpl implements UnitOfWork {
 
 		lookForNestedAggregateRoots();		
 		
-		if (!checkCreation())
+		if (!doCreation())
 			return false;
 
-		if (!checkUpdate())
+		if (!doUpdate())
 			return false;
 	
-		if (!checkDelete())
+		if (!doRemove())
 			return false;
 		
 		clear();
@@ -227,27 +224,27 @@ public class UnitOfWorkImpl implements UnitOfWork {
 
 
 
-	private boolean checkCreation() {
+	private boolean doCreation() {
 		
-		List<ObservedAggregateRoot> rootsToCreate = rootsToCreate();
-		
-		//Order by each other references
-		orderByReferences(rootsToCreate);
-			
+		List<ObservedAggregateRoot> roots = entitiesToCreate();
+					
 		//Create
-		for (ObservedAggregateRoot aggRoot : rootsToCreate) {
+		for (ObservedAggregateRoot root : roots) {
+			
+			Repository<Entity<?>,?> repository = repositoryFor( root.entity() );
+			
+			RepReturn<?> r = repository.add( root.entity() );
+			
+			if (r.failure()) 
+				return returnFalseWithMessage( r.message() );
 
-				Repository<Entity<?>,?> repository = repositoryFor( aggRoot.entity() );
-				
-				RepReturn<?> r = repository.add( aggRoot.entity() );
-				
-				if (r.failure()) 
-					return returnFalseWithMessage( r.message() );
-				
-				aggRoot.markCreated();
+			root.markCreated();
 
-				addMessage( "CREATED: " + entityLog(r.getEntity()));
-			}
+			if (hasNullCyclicRef(root))
+				root.markDirty();
+				
+			addMessage( "CREATED " + entityLog(r.getEntity()));
+		}
 				
 		return true;
 	}
@@ -272,23 +269,21 @@ public class UnitOfWorkImpl implements UnitOfWork {
 	
 
 
-	private boolean checkUpdate() {
+	private boolean doUpdate() {
+
+		List<ObservedAggregateRoot> roots = entitiesToUpdate();
 		
-		for (ObservedAggregateRoot aggRoot : roots)		
-			
-			if (aggRoot.changed() && 
-			   !aggRoot.isCreated() &&				 
-			   !aggRoot.isMarkedToRemove()) {
+		for (ObservedAggregateRoot root : roots){
 
-				Repository<Entity<?>,?> repository = repositoryFor( aggRoot.entity() );
-				
-				RepReturn<?> r = repository.save( aggRoot.entity() );
-				
-				if (r.failure()) 
-					return returnFalseWithMessage( r.message() );
-				
-				addMessage( "UPDATED: " + entityLog(r.getEntity()));
-			}
+			Repository<Entity<?>,?> repository = repositoryFor( root.entity() );
+			
+			RepReturn<?> r = repository.save( root.entity() );
+			
+			if (r.failure()) 
+				return returnFalseWithMessage( r.message() );
+			
+			addMessage( "UPDATED " + entityLog(r.getEntity()));
+		}
 				
 		return true;
 	}
@@ -310,21 +305,21 @@ public class UnitOfWorkImpl implements UnitOfWork {
 	
 
 	
-	private boolean checkDelete() {
+	private boolean doRemove() {
 
-		for (ObservedAggregateRoot aggRoot : roots)	
+		List<ObservedAggregateRoot> roots = entitiesToDelete();
+		
+		for (ObservedAggregateRoot root : roots) {
+				
+			Repository<Entity<?>,?> repository = repositoryFor( root.entity() );
 			
-			if (aggRoot.isMarkedToRemove()) {
-				
-				Repository<Entity<?>,?> repository = repositoryFor( aggRoot.entity() );
-				
-				RepReturn<?> r = repository.remove( aggRoot.entity() );
-				
-				if (r.failure()) 
-					return returnFalseWithMessage( r.message() );
-				
-				addMessage( "REMOVED: " + entityLog( aggRoot.entity() ));
-			}
+			RepReturn<?> r = repository.remove( root.entity() );
+			
+			if (r.failure()) 
+				return returnFalseWithMessage( r.message() );
+			
+			addMessage( "REMOVED " + entityLog( root.entity() ));
+		}
 						
 		return true;
 	}
@@ -353,21 +348,150 @@ public class UnitOfWorkImpl implements UnitOfWork {
 	
 	
 	
+	@Override
+	public void printChangesToCommit() {
+
+		Log.printLn("------------------------");	
+		Log.printLn("Changes ready to commit:");	
+			
+		for (ObservedAggregateRoot root : entitiesToCreate())
+			Log.printLn("CREATE " + root.toString() );
+	
+		for (ObservedAggregateRoot root : entitiesToUpdate())
+			Log.printLn("UPDATE " +  root.toString() );
+
+		for (ObservedAggregateRoot root : entitiesToDelete())
+			Log.printLn("DELETE " + root.toString() );
+
+		Log.printLn("------------------------");
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
 	
 
-	private List<ObservedAggregateRoot> rootsToCreate() {
+	public List<ObservedAggregateRoot> entitiesToCreate() {
 		
-		List<ObservedAggregateRoot> noIdRoots = new ArrayList<>();
+		List<ObservedAggregateRoot> toCreate = new ArrayList<>();
 		
-		for (ObservedAggregateRoot aggRoot : roots)		
-			if (aggRoot.noId())
-				noIdRoots.add(aggRoot);
+		for (ObservedAggregateRoot root : roots)		
+			if (root.noId())
+				toCreate.add(root);
+
+		//Order by each other references
+		orderByReferences(toCreate);
 						
-		return noIdRoots;
+		return toCreate;
 	}
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	
+	public List<ObservedAggregateRoot> entitiesToUpdate() {
+		
+		List<ObservedAggregateRoot> toUpdate = new ArrayList<>();
+		
+		for (ObservedAggregateRoot root : roots)		
+			if (root.changed() && 
+				root.hasId() &&
+				!root.isCreated() &&				 
+				!root.isMarkedToRemove())
+				toUpdate.add(root);
+						
+		return toUpdate;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+
+	public List<ObservedAggregateRoot> entitiesToDelete() {
+		
+		List<ObservedAggregateRoot> toDelete = new ArrayList<>();
+		
+		for (ObservedAggregateRoot root : roots)		
+			if (root.isMarkedToRemove())
+				toDelete.add(root);
+						
+		return toDelete;
+	}
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+//-------------------------------------------------------------------------------------------------	
+			
+			
+		
+	
+	
+	
+	
+	
+	
+
+	
+	
+	private boolean hasNullCyclicRef(ObservedAggregateRoot root) {
+		
+		List<Entity<?>> nested = DomainUtil.lookForAggregateRoots( root.entity() );
+		
+		for (Entity<?> entity : nested)
+			if (DomainUtil.noId(entity)) 
+				return true;
+						
+		return false;
+	}
+
+	
+	
+	
+	
+
+
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -447,10 +571,16 @@ public class UnitOfWorkImpl implements UnitOfWork {
 
 	private ObservedAggregateRoot findAggregateRoot(Entity<?> persistedEntity) {
 
-		for (ObservedAggregateRoot aggRoot : roots)	
-			if (DomainUtil.hasId( aggRoot.entity() ) &&
-				aggRoot.entity().equals(persistedEntity))
-				return aggRoot;
+		for (ObservedAggregateRoot aggRoot : roots)	{
+			
+			if (DomainUtil.hasId( aggRoot.entity() )) {
+				if (aggRoot.entity().equals(persistedEntity))
+					return aggRoot;
+			}
+			else
+				if (aggRoot.entity() == persistedEntity)
+					return aggRoot;			
+		}
 		
 		return null;
 	}
@@ -531,7 +661,7 @@ public class UnitOfWorkImpl implements UnitOfWork {
 				return r;
 		}
 		
-		throw new IllegalStateException(MSG_NO_ENTITY + entity.getClass().getName());
+		throw new IllegalStateException(MSG_NO_REPOSITORY + entity.getClass().getName());
 	}
 	
 	
@@ -583,7 +713,7 @@ public class UnitOfWorkImpl implements UnitOfWork {
 
 	private static final String MSG_ATTEMPT_REMOVE = "Attempt to REMOVE an Entity without id!";
 
-	private static final String MSG_NO_ENTITY      = "No repository for this Entity! ";
+	private static final String MSG_NO_REPOSITORY      = "No repository for this Entity! ";
 
 }
 
