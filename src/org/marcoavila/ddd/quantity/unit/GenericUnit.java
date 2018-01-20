@@ -1,12 +1,8 @@
-package org.marcoavila.ddd.quantity;
+package org.marcoavila.ddd.quantity.unit;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 
- * @author Marco Avila
- */
 public class GenericUnit implements Unit {
 
 	private final String code;
@@ -80,7 +76,7 @@ public class GenericUnit implements Unit {
 	
 	
 	@Override
-	public Float ratio(Unit otherUnit) {
+	public Float ratioFor(Unit otherUnit) {
 		
 		for (Unit unit : ratioMap.keySet())
 			if (unit.equals(otherUnit))

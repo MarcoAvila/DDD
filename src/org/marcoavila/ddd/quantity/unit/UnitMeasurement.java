@@ -1,4 +1,4 @@
-package org.marcoavila.ddd.quantity;
+package org.marcoavila.ddd.quantity.unit;
 
 /**
  * 

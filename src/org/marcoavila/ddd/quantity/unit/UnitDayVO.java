@@ -1,10 +1,10 @@
-package org.marcoavila.ddd.quantity;
+package org.marcoavila.ddd.quantity.unit;
 
 /**
  * 
  * @author Marco Avila
  */
-public class UnitDayVO implements Unit{ 
+public class UnitDayVO implements Unit { 
 
 	@Override
 	public String code() {
@@ -23,7 +23,7 @@ public class UnitDayVO implements Unit{
 	}
 	
 	@Override
-	public Float ratio(Unit otherUnit) {
+	public Float ratioFor(Unit otherUnit) {
 		if (otherUnit instanceof UnitWeekVO)
 			return 1f/7;
 		return null;

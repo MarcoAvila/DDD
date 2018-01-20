@@ -1,16 +1,18 @@
 package org.marcoavila.ddd.quantity;
 
-import org.marcoavila.ddd.util.Log;
+import org.marcoavila.ddd.AbstractValueObject;
+import org.marcoavila.ddd.quantity.unit.Unit;
 
 /**
  * 
  * @author Marco Avila
  */
-public final class QuantityVO {
+
+public class QuantityVO extends AbstractValueObject<QuantityVO> {
 
 	private final float amount;
 	
-	private final Unit unit;
+	protected final Unit unit;
 
 	public QuantityVO(float amount, Unit unit) {
 		this.amount = amount;
@@ -26,15 +28,85 @@ public final class QuantityVO {
 	
 	
 	
+	
+	
+	
+	
+	
+
+	
+	public boolean equalsQuantity(QuantityVO otherHeight) {
+		
+		QuantityVO otherSameUnit = otherHeight.convertTo( unit );
+		
+		return Float.floatToIntBits( getAmount() ) == Float.floatToIntBits( otherSameUnit.getAmount() );
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public boolean greaterThan(QuantityVO otherHeight) {
+		
+		QuantityVO otherSameUnit = otherHeight.convertTo( unit );
+				
+		return this.getAmount() > otherSameUnit.getAmount();
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	public boolean lesserThan(QuantityVO otherHeight) {
+
+		QuantityVO otherSameUnit = otherHeight.convertTo( unit );
+				
+		return this.getAmount() < otherSameUnit.getAmount();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public QuantityVO convertTo(Unit targetUnit) {
+		
+		if (unit.unitMeasurement() == targetUnit.unitMeasurement() &&
+			unit.code().equals( targetUnit.code() ))
+			return this;
 		
 		if (!unit.unitMeasurement().equals( targetUnit.unitMeasurement()))
 			throw new IllegalArgumentException("Attempt to convert to an incompatible unit! From " +
 												unit.description() + " to " + targetUnit.description());
 		
-		float ratio = unit.ratio(targetUnit);
+		float ratio = unit.ratioFor(targetUnit);
 		
-		return new QuantityVO(amount *  ratio, targetUnit);
+		return new QuantityVO(amount * ratio, targetUnit);
 	}
 	
 	
@@ -47,20 +119,25 @@ public final class QuantityVO {
 	
 	
 	
-	public String display() {
-		return amount + " " + unit.code();
+	public final String display() {
+				
+		String amountString = ( (double)amount == Math.floor( (double)amount) ?
+				String.valueOf( (int)amount) : 
+				String.valueOf(  amount) );
+		
+		return amountString + unit.code();
 	}
 
 
 
 
 
-	public float getAmount() {
+	public final float getAmount() {
 		return amount;
 	}
 
 
-	public int getAmountInt() {
+	public final int getAmountInt() {
 		return Float.valueOf(amount).intValue();
 	}
 
@@ -70,10 +147,25 @@ public final class QuantityVO {
 	
 	
 	
-	
-	
-	
-	
+
+	@Override
+	public boolean valueEquals(QuantityVO other) {
+		
+		if (Float.floatToIntBits(amount) != Float.floatToIntBits(other.amount))
+			return false;
+		if (unit == null) {
+			if (other.unit != null)
+				return false;
+		} else if (!unit.equals(other.unit))
+			return false;
+		return true;
+	}
+
+
+
+
+
+
 
 	@Override
 	public int hashCode() {
@@ -86,40 +178,24 @@ public final class QuantityVO {
 
 
 
-
+	
+	
+	
+	
+	
+	
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		QuantityVO other = (QuantityVO) obj;
-		if (Float.floatToIntBits(amount) != Float.floatToIntBits(other.amount))
-			return false;
-		if (unit == null) {
-			if (other.unit != null)
-				return false;
-		} else if (!unit.equals(other.unit))
-			return false;
-		return true;
-	}
-
-
-	
-	
-	
-/*
-	public static void main(String[] a) {
-
-		QuantityVO days = new QuantityVO( 6, UnitDayVO.instance);		
-		QuantityVO weeks = days.convertTo( UnitMeterVO.instance );
+	public String toString() {
 		
-		Log.print( weeks.getAmountInt() );
+		return display();
 	}
-*/
-	
+
+
+
+
+
+
+	private static final long serialVersionUID = 1L;
 	
 }

@@ -1,30 +1,22 @@
-package org.marcoavila.ddd.quantity;
+package org.marcoavila.ddd.quantity.unit;
 
 /**
  * 
  * @author Marco Avila
  */
-public class UnitMinuteVO implements Unit {
+public class UnitHourVO implements Unit{
 
-	
-	
-	
-	
 	@Override
 	public String code() {
 
-		return "m";
+		return "h";
 	}
 
-	
-	
-	
 	@Override
 	public String description() {
 
-		return "minutes";
+		return "hours";
 	}
-
 
 
 	@Override
@@ -33,11 +25,9 @@ public class UnitMinuteVO implements Unit {
 		return UnitMeasurement.TIME;
 	}
 	
-	
-	
 	@Override
-	public Float ratio(Unit otherUnit) {
-		// TODO Auto-generated method stub
+	public Float ratioFor(Unit otherUnit) {
+
 		return null;
 	}
 

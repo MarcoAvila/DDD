@@ -657,9 +657,13 @@ public class UnitOfWorkImpl implements UnitOfWork {
 			
 			Class<?> repEntity = ReflectionUtil.parameterizedType( r.getClass() );
 			
-			if (repEntity.equals( entity.getClass() ))
-				return r;
-		}
+			//Procura também pelo repositório das superclasses
+			List<Class<?>> superclasses = ReflectionUtil.hierarchy( entity.getClass() );
+						
+			for (Class<?> c : superclasses)
+    			if (repEntity.equals(c))
+    				return r;
+    	}
 		
 		throw new IllegalStateException(MSG_NO_REPOSITORY + entity.getClass().getName());
 	}

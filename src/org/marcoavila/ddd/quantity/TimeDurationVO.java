@@ -1,73 +1,42 @@
 package org.marcoavila.ddd.quantity;
 
-public class TimeDurationVO {
+import org.marcoavila.ddd.quantity.unit.Unit;
+import org.marcoavila.ddd.quantity.unit.UnitDayVO;
+import org.marcoavila.ddd.quantity.unit.UnitMeasurement;
+import org.marcoavila.ddd.quantity.unit.UnitWeekVO;
 
-	private final int hours;
-	private final int minutes;
-	
-	
-	
-	
-	public TimeDurationVO(int hours, int minutes) {
-		this.hours = hours;
-		this.minutes = minutes;
-	}
+public class TimeDurationVO extends QuantityVO {
 
-
-	public TimeDurationVO(int hours) {
-		this.hours = hours;
-		this.minutes = 0;
-	}
-
-
-
-	
-	
-	
-	
-
-	public TimeDurationVO minus(TimeDurationVO other) {
+	private TimeDurationVO(float amount, Unit unit) {
+		super(amount, unit);		
 		
-		int h = getHours()   - other.getHours();
-		int m = getMinutes() - other.getMinutes();
-		
-		h += m / 60;
-		m = m % 60;
-		
-		return new TimeDurationVO(m, h);
+		if (unit.unitMeasurement() != UnitMeasurement.TIME)
+			throw new IllegalArgumentException("Invalid unit for weight!");
 	}
 
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	public int getHours() {
-		return hours;
-	}
-
-
-
-
-	public int getMinutes() {
-		return minutes;
+	public static TimeDurationVO forWeeks(Float amount) {		
+		return new TimeDurationVO(amount, UnitWeekVO.instance);
 	}
 	
 	
+	
 
-	public String display() {
-		return hours + ":" + minutes;
+	
+	public static TimeDurationVO forDays(Float amount) {		
+		return new TimeDurationVO(amount, UnitDayVO.instance);
 	}
 	
 	
 	
 	
+
 	
 	
+	
+	
+	private static final long serialVersionUID = 1L;
 }

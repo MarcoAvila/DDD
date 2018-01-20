@@ -11,8 +11,9 @@ import java.util.List;
 
 /**
  * 
- * @author Marco Avila
+ * @author marco-souza
  */
+
 public class ReflectionUtil {
 
 	
@@ -58,6 +59,21 @@ public class ReflectionUtil {
 	
 	
 	
+	
+	
+	public static List<Class<?>> hierarchy(Class<?> clazz) {
+
+		List<Class<?>> classes = new ArrayList<>();
+				
+		while (!clazz.getSuperclass().equals( Object.class )   ) {
+
+			classes.add(clazz);			
+			
+			clazz = clazz.getSuperclass();
+		}
+			
+		return classes;
+	}
 	
 	
 	

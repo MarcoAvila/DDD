@@ -1,4 +1,4 @@
-package org.marcoavila.ddd.quantity;
+package org.marcoavila.ddd.quantity.unit;
 
 /**
  * 
@@ -40,10 +40,10 @@ public class UnitMeterVO implements Unit {
 	
 
 	@Override
-	public Float ratio(Unit otherUnit) {
+	public Float ratioFor(Unit otherUnit) {
 		
 		if (otherUnit instanceof UnitCentimeterVO)
-			return 0.01f;
+			return 100f;
 		
 		return null;
 	}

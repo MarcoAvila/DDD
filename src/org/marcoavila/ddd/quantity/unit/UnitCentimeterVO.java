@@ -1,10 +1,16 @@
-package org.marcoavila.ddd.quantity;
+package org.marcoavila.ddd.quantity.unit;
 
 /**
  * 
  * @author Marco Avila
  */
 public class UnitCentimeterVO implements Unit {
+
+	public static final UnitCentimeterVO instance = new UnitCentimeterVO();
+	
+	private UnitCentimeterVO() {
+		
+	}
 
 	
 	
@@ -44,10 +50,10 @@ public class UnitCentimeterVO implements Unit {
 	
 
 	@Override
-	public Float ratio(Unit otherUnit) {
+	public Float ratioFor(Unit otherUnit) {
 		
 		if (otherUnit instanceof UnitMeterVO)
-			return 100f;
+			return 0.01f;
 		
 		return null;
 	}

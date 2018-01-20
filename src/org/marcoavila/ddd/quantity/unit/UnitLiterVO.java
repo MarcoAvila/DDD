@@ -1,10 +1,16 @@
-package org.marcoavila.ddd.quantity;
+package org.marcoavila.ddd.quantity.unit;
 
 /**
  * 
  * @author Marco Avila
  */
 public class UnitLiterVO implements Unit {
+
+	public static final UnitLiterVO instance = new UnitLiterVO();
+	
+	private UnitLiterVO() {
+		
+	}
 
 	
 	
@@ -38,7 +44,7 @@ public class UnitLiterVO implements Unit {
 
 
 	@Override
-	public Float ratio(Unit otherUnit) {
+	public Float ratioFor(Unit otherUnit) {
 		
 		return null;
 	}
