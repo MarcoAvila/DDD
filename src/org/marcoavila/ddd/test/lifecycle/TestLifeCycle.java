@@ -8,8 +8,8 @@ import static org.marcoavila.ddd.test.lifecycle.TreatmentState.INC;
 import static org.marcoavila.ddd.test.lifecycle.TreatmentState.IND;
 import static org.marcoavila.ddd.test.lifecycle.TreatmentState.REA;
 import static org.marcoavila.ddd.test.lifecycle.TreatmentState.SUS;
-import junit.framework.Assert;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.marcoavila.ddd.util.Log;

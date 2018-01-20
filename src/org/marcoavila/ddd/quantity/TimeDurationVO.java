@@ -2,6 +2,7 @@ package org.marcoavila.ddd.quantity;
 
 import org.marcoavila.ddd.quantity.unit.Unit;
 import org.marcoavila.ddd.quantity.unit.UnitDayVO;
+import org.marcoavila.ddd.quantity.unit.UnitHourVO;
 import org.marcoavila.ddd.quantity.unit.UnitMeasurement;
 import org.marcoavila.ddd.quantity.unit.UnitWeekVO;
 
@@ -28,6 +29,14 @@ public class TimeDurationVO extends QuantityVO {
 	
 	public static TimeDurationVO forDays(Float amount) {		
 		return new TimeDurationVO(amount, UnitDayVO.instance);
+	}
+	
+	
+	
+	
+	
+	public static TimeDurationVO forHours(Float amount) {		
+		return new TimeDurationVO(amount, UnitHourVO.instance);
 	}
 	
 	

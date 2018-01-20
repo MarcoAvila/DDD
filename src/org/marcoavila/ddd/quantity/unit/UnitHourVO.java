@@ -6,6 +6,13 @@ package org.marcoavila.ddd.quantity.unit;
  */
 public class UnitHourVO implements Unit{
 
+	public static final UnitHourVO instance = new UnitHourVO();
+	
+	public UnitHourVO() {
+
+	}
+
+	
 	@Override
 	public String code() {
 

@@ -59,7 +59,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 	
 	
 	
-	protected EN findImpl(ID id) {
+	protected EN findImpl(ID id) throws Exception {
 		throw new UnsupportedOperationException( errorNotImpl("find") );
 	}
 	
@@ -113,7 +113,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 		
 	
 	
-	protected EN addImpl(EN entity) {
+	protected EN addImpl(EN entity) throws Exception {
 		throw new UnsupportedOperationException( errorNotImpl("add") );
 	}
 	
@@ -168,7 +168,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 	
 	
 	
-	protected EN saveImpl(EN entity) {
+	protected EN saveImpl(EN entity) throws Exception {
 		throw new UnsupportedOperationException( errorNotImpl("save") );
 	}
 	
@@ -216,7 +216,7 @@ public abstract class AbstractRepository<EN extends Entity<ID>, ID> implements R
 	
 	
 	
-	protected void removeImpl(EN entity) {
+	protected void removeImpl(EN entity) throws Exception {
 		throw new UnsupportedOperationException( errorNotImpl("remove") );
 	}
 

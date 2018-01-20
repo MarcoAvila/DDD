@@ -15,7 +15,7 @@ import org.marcoavila.ddd.repository.AbstractRepository;
  * 
  * @author Marco Avila
  */
-public abstract class AbstractObjectRep<EN extends Entity<Long>, ID> extends AbstractRepository<EN, Long>  {
+public abstract class AbstractObjectRep<EN extends Entity<ID>, ID> extends AbstractRepository<EN, ID>  {
 
 	private final String DATA_BASE_PATH;
 	
@@ -35,14 +35,7 @@ public abstract class AbstractObjectRep<EN extends Entity<Long>, ID> extends Abs
 
 		en.setId( generateId() );
 		
-		FileOutputStream fout = new FileOutputStream(DATA_BASE_PATH + 
-				File.separator +
-				fileNameFor( en.getId() ));
-		
-		ObjectOutputStream oos = new ObjectOutputStream(fout);
-		
-		oos.writeObject(en);		
-		oos.close();
+		write(en);
 				
 		return en;		
 	}
@@ -66,7 +59,7 @@ public abstract class AbstractObjectRep<EN extends Entity<Long>, ID> extends Abs
 		
 		FileInputStream fin = new FileInputStream(DATA_BASE_PATH + 
 				File.separator +
-				fileNameFor( (Long)id));
+				fileNameFor(id));
 		
 		ObjectInputStream ois = new ObjectInputStream(fin);
 		
@@ -88,6 +81,14 @@ public abstract class AbstractObjectRep<EN extends Entity<Long>, ID> extends Abs
 	
 	
 	
+
+	
+	protected EN saveObj(EN en) throws Exception {
+		
+		write(en);
+				
+		return en;		
+	}
 	
 	
 	
@@ -96,7 +97,39 @@ public abstract class AbstractObjectRep<EN extends Entity<Long>, ID> extends Abs
 	
 	
 	
-	private String fileNameFor(Long id) {
+	
+
+	
+	
+
+	
+	private void write(EN en) throws Exception {
+		
+		FileOutputStream fout = new FileOutputStream(DATA_BASE_PATH + 
+				File.separator +
+				fileNameFor( en.getId() ));
+		
+		ObjectOutputStream oos = new ObjectOutputStream(fout);
+		
+		oos.writeObject(en);		
+		oos.close();	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private String fileNameFor(ID id) {
 		return id.toString() + "." + AbstractObjectDao.FILE_EXTENSION;
 	}
 	
@@ -105,9 +138,8 @@ public abstract class AbstractObjectRep<EN extends Entity<Long>, ID> extends Abs
 
 	
 	
-	private Long generateId() {
-		return Math.abs( new Random().nextLong() );
-	}
+	protected abstract ID generateId();
+	
 	
 	
 	

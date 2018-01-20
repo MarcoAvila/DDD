@@ -34,7 +34,15 @@ public class BaseReturn<R> implements Serializable {
 
 	
 	
-		
+
+	
+	public BaseReturn(boolean success) {
+	    this.success = success;
+	    this.message = "";
+	    this.result = null;
+    }
+
+
 	
 	
     public boolean success() {
