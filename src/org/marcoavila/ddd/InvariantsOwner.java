@@ -10,6 +10,8 @@ import java.io.Serializable;
 public interface InvariantsOwner extends Serializable {
 	
 	public Boolean checkInvariants();	
+
+	public String invariantsMessage();	
 	
 	public String message();	
 }

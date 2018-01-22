@@ -57,15 +57,14 @@ public class ReflectionUtil {
 	
 	
 	
-	
-	
+
 	
 	
 	public static List<Class<?>> hierarchy(Class<?> clazz) {
 
 		List<Class<?>> classes = new ArrayList<>();
 				
-		while (!clazz.getSuperclass().equals( Object.class )   ) {
+		while (!clazz.equals( Object.class )   ) {
 
 			classes.add(clazz);			
 			
@@ -74,7 +73,6 @@ public class ReflectionUtil {
 			
 		return classes;
 	}
-	
 	
 	
 	

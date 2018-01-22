@@ -30,6 +30,8 @@ public class ValidationUtil {
 	public static boolean cpf(Long value) {
 		
 		String cpf = value.toString();
+
+		cpf = "00000000000".substring(0, 11 - cpf.length()) + cpf;
 		
 		int soma = 0;
 

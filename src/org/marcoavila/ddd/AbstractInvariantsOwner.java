@@ -10,6 +10,7 @@ public abstract class AbstractInvariantsOwner implements InvariantsOwner {
 
 	protected String message;
 
+	private String invariantsMessage;
 	
 	
 	
@@ -32,24 +33,31 @@ public abstract class AbstractInvariantsOwner implements InvariantsOwner {
 	
 	
 	
+
+	
+
+	public String invariantsMessage() {
+		
+		return invariantsMessage;
+	}
 	
 	
 	
 	
-	
+
 	
 	protected final boolean invariantsError(String message) {
 		
+		this.message = message;
+		
 		final String title = "INVARIANTS ERROR: ";
 		
-		this.message = (message.contains(title) ? "" : title + invariantsHeader() )  + 
-						message;
+		this.invariantsMessage = (message.contains(title) ? "" : title + invariantsHeader() ) + 
+						          message;
 		
 		return false;
 	}
 
-
-	
 	
 	
 	
@@ -75,5 +83,7 @@ public abstract class AbstractInvariantsOwner implements InvariantsOwner {
 	
 	
 	
+
+	private static final long serialVersionUID = 1L;
 	
 }
