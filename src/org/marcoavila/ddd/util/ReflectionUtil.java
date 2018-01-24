@@ -83,6 +83,39 @@ public class ReflectionUtil {
 	
 	
 	
+	
+	
+	
+	
+	public static List<Class<?>> implementedInterfaces(Class<?> clazz) {
+
+		List<Class<?>> implemented = new ArrayList<>();
+		
+		List<Class<?>> hierarchy = hierarchy(clazz);
+		
+		for (Class<?> c : hierarchy)
+			for (Class<?> i : c.getInterfaces())
+				implemented.add(i);
+			
+		return implemented;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static List<Class<?>> parameterizedTypes(Class<?> clazz) {
 		
 		List<Class<?>> classes = new ArrayList<>();
