@@ -140,6 +140,10 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 	
 	public static QuantityVO parse(String display) {
 		
+		if (display == null ||
+			display.trim().equals(""))
+			return null;
+		
 		String amountString = StringsUtil.onlyNumbers(display);
 
 		String unitString = StringsUtil.onlyText(display);
