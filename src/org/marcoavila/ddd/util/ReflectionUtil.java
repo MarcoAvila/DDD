@@ -109,6 +109,19 @@ public class ReflectionUtil {
 	
 	
 	
+	public static List<Class<?>> types(Class<?> clazz) {
+
+		List<Class<?>> types = ReflectionUtil.hierarchy(clazz);
+		
+		types.addAll( ReflectionUtil.implementedInterfaces(clazz) );
+			
+		return types;
+	}
+	
+	
+	
+	
+	
 	
 	
 	
