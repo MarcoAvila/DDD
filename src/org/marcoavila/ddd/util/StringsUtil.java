@@ -102,6 +102,52 @@ public class StringsUtil {
 	
 	
 	
+
+	
+	
+
+	public static String onlyNumbers(String text) {
+				
+		String numbers = "";
+		
+		for (char c : text.toCharArray()) {				
+				boolean isNumber = (c >='0' && c <='9') || 
+						            c == '.' || c == ',';				
+				if (isNumber)
+					numbers += String.valueOf(c);
+			}
+		
+		return numbers;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	public static String onlyText(String text) {
+				
+		String onlyText = "";
+		
+		for (char c : text.toCharArray()) {				
+				boolean isNumber = (c >='0' && c <='9') || 
+						            c == '.' || c == ',';				
+				if (!isNumber)
+					onlyText += String.valueOf(c);
+			}
+		
+		return onlyText;
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

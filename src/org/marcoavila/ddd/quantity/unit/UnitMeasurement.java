@@ -12,6 +12,8 @@ public enum UnitMeasurement {
 	
 	WEIGHT,
 	
-	TIME;
+	TIME,
+	
+	ANY;
 	
 }

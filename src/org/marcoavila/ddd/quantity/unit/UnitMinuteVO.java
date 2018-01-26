@@ -41,4 +41,10 @@ public class UnitMinuteVO implements Unit {
 		return null;
 	}
 
+	
+	private UnitMinuteVO() {
+
+	}
+
+	public static final Unit instance = new UnitMinuteVO();
 }

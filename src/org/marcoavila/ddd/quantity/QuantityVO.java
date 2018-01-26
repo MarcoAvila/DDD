@@ -1,7 +1,11 @@
 package org.marcoavila.ddd.quantity;
 
 import org.marcoavila.ddd.AbstractValueObject;
+import org.marcoavila.ddd.quantity.unit.GenericUnit;
 import org.marcoavila.ddd.quantity.unit.Unit;
+import org.marcoavila.ddd.quantity.unit.UnitMeasurement;
+import org.marcoavila.ddd.quantity.unit.Units;
+import org.marcoavila.ddd.util.StringsUtil;
 
 /**
  * 
@@ -128,6 +132,26 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 		return amountString + unit.code();
 	}
 
+	
+	
+	
+	
+	
+	
+	public static QuantityVO parse(String display) {
+		
+		String amountString = StringsUtil.onlyNumbers(display);
+
+		String unitString = StringsUtil.onlyText(display);
+		
+		Unit unit = new Units().parseUnit(unitString);
+				
+		return new QuantityVO( Float.parseFloat(amountString) , unit);
+	}
+	
+	
+	
+	
 
 
 
