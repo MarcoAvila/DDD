@@ -85,12 +85,17 @@ public class DomainUtil {
 	
 	
 	
-	
 
 	
 	public static boolean aggregateRoot(Entity<?> entity) {
+		
+		List<Class<?>> types = ReflectionUtil.types( entity.getClass() );
+		
+		for (Class<?> t : types)
+			if (ReflectionUtil.annotated(t, AggregateRoot.class))
+				return true;
 
-		return ReflectionUtil.annotated(entity.getClass(), AggregateRoot.class);
+		return false;
 	}
 	
 	
