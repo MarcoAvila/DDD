@@ -177,6 +177,23 @@ public class ReflectionUtil {
 	
 	
 	
+
+	
+
+	public static List<Field> hierarchyAttributes(Class<?> clazz) { 
+
+		List<Field> atts = new ArrayList<>();
+
+		for (Class<?> c : hierarchy(clazz))
+			atts.addAll( classAttributes(c) );		
+				
+		return atts;
+	}
+ 	
+	
+	
+	
+	
 	
 
 	
