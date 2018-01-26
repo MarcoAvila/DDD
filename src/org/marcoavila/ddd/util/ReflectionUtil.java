@@ -205,7 +205,8 @@ public class ReflectionUtil {
 
 		try {	    			
     		for (Method m : methods)
-    			if (m.getName().equalsIgnoreCase("get" + field.getName())) {
+    			if (m.getName().equalsIgnoreCase("get" + field.getName()) ||
+    			    m.getName().equalsIgnoreCase( field.getName() )) {
     				
     				Object o = m.invoke(owner, new Object[] {} );
     				
