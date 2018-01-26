@@ -122,7 +122,7 @@ public class DomainUtil {
 			return roots;
 		
 		//Fields
-		List<Field> atts = ReflectionUtil.classAttributes( entity.getClass() );
+		List<Field> atts = ReflectionUtil.hierarchyAttributes( entity.getClass() );
 		
 		for (Field f : atts)
 			if (ReflectionUtil.annotated( f.getType(), AggregateRoot.class)) {
