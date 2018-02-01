@@ -64,7 +64,8 @@ public class ReflectionUtil {
 
 		List<Class<?>> classes = new ArrayList<>();
 				
-		while (!clazz.equals( Object.class )   ) {
+		while (clazz != null &&
+		   	!clazz.equals( Object.class )   ) {
 
 			classes.add(clazz);			
 			
