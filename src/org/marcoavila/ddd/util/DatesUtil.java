@@ -11,7 +11,9 @@ import java.util.GregorianCalendar;
 
 public class DatesUtil {
 
-    private static final long DAY_DURATION = 1000 * 60 * 60 * 24;
+    private static final long HOUR_DURATION = 1000 * 60 * 60;
+    
+    private static final long DAY_DURATION = HOUR_DURATION * 24;
    
    
    
@@ -397,6 +399,20 @@ public class DatesUtil {
    
    
    
+   
+   
+
+    
+
+
+    public static int hoursSince(Calendar date) {
+      
+        long dateTime = date.getTimeInMillis() / HOUR_DURATION;
+      
+        long todayTime = now().getTimeInMillis() / HOUR_DURATION;
+      
+        return (int)(todayTime - dateTime);
+    }
    
    
    
