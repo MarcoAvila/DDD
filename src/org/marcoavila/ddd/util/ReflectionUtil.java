@@ -49,11 +49,6 @@ public class ReflectionUtil {
 	
 	
 
-	public static Class<?> parameterizedType(Class<?> clazz) {
-		
-		return parameterizedTypes(clazz).iterator().next();
-	}
- 	
 	
 	
 	
@@ -130,6 +125,26 @@ public class ReflectionUtil {
 	
 	
 	
+	
+	
+	
+
+	public static Class<?> parameterizedType(Class<?> clazz) {
+		
+		return parameterizedTypes(clazz).iterator().next();
+	}
+ 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static List<Class<?>> parameterizedTypes(Class<?> clazz) {
 		
 		List<Class<?>> classes = new ArrayList<>();
@@ -137,7 +152,7 @@ public class ReflectionUtil {
 		ParameterizedType pt = (ParameterizedType)clazz.getGenericSuperclass();
 				
 		for (Type t : pt.getActualTypeArguments())
-			classes.add( (Class<?>)t);
+			classes.add( (Class<?>)t );
 		
 		return classes;		
 	}

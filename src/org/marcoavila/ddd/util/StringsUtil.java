@@ -148,6 +148,34 @@ public class StringsUtil {
 	
 	
 	
+
+	
+	public static String capitalizeFirst(String text) {
+		
+		return text.substring(0,1).toUpperCase() +
+				text.substring(1, text.length());
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+/*
+	public static void main(String[] a) {
+		
+		Log.log( StringsUtil.capitalizeFirst("abcdefg") );
+	}
+*/
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

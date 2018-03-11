@@ -4,7 +4,7 @@ package org.marcoavila.ddd.quantity.unit;
  * 
  * @author Marco Avila
  */
-public class UnitHourVO implements Unit{
+public class UnitHourVO implements Unit {
 
 	public static final UnitHourVO instance = new UnitHourVO();
 	

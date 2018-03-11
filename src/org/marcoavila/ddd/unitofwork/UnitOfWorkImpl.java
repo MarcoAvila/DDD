@@ -719,6 +719,41 @@ public class UnitOfWorkImpl implements UnitOfWork {
 
 	private static final String MSG_NO_REPOSITORY      = "No repository for this Entity! ";
 
+
+
+
+
+
+
+
+	@Override
+	public String toString() {
+
+		String s = ""; /*"Changes ready to commit:\n";	
+			
+		for (ObservedAggregateRoot root : entitiesToCreate())
+			s += ("CREATE " + root.toString() );
+	
+		for (ObservedAggregateRoot root : entitiesToUpdate())
+			s += ("UPDATE " +  root.toString() );
+
+		for (ObservedAggregateRoot root : entitiesToDelete())
+			s += ("DELETE " + root.toString() );*/
+
+		for (ObservedAggregateRoot root : roots)
+			s += root.toString() + "\n";
+			
+		return s;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
 }
 
 
