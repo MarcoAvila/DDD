@@ -35,5 +35,7 @@ public class UnitWeekVO implements Unit{
 	}
 
 	public static final Unit instance = new UnitWeekVO();
+
+	private static final long serialVersionUID = 1L;
 	
 }

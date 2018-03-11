@@ -4,26 +4,27 @@ package org.marcoavila.ddd.quantity.unit;
  * 
  * @author Marco Avila
  */
-public class UnitHourVO implements Unit {
+public class UnitSecondVO implements Unit {
 
-	public static final UnitHourVO instance = new UnitHourVO();
 	
-	public UnitHourVO() {
-
-	}
-
+	
+	
 	
 	@Override
 	public String code() {
 
-		return "h";
+		return "s";
 	}
 
+	
+	
+	
 	@Override
 	public String description() {
 
-		return "hours";
+		return "seconds";
 	}
+
 
 
 	@Override
@@ -32,18 +33,26 @@ public class UnitHourVO implements Unit {
 		return UnitMeasurement.TIME;
 	}
 	
+	
+	
 	@Override
 	public Float ratioFor(Unit otherUnit) {
 
 		if (otherUnit instanceof UnitMinuteVO)
-			return 60f;
+			return 1f / 60;
 
-		if (otherUnit instanceof UnitSecondVO)
-			return 3600f;
+		if (otherUnit instanceof UnitHourVO)
+			return 1f / 3600;
 		
 		return null;
 	}
 
+	
+	private UnitSecondVO() {
+
+	}
+
+	public static final Unit instance = new UnitSecondVO();
 
 	private static final long serialVersionUID = 1L;
 }

@@ -5,10 +5,6 @@ package org.marcoavila.ddd.quantity.unit;
  * @author Marco Avila
  */
 public class UnitMinuteVO implements Unit {
-
-	
-	
-	
 	
 	@Override
 	public String code() {
@@ -37,7 +33,13 @@ public class UnitMinuteVO implements Unit {
 	
 	@Override
 	public Float ratioFor(Unit otherUnit) {
-		// TODO Auto-generated method stub
+
+		if (otherUnit instanceof UnitSecondVO)
+			return 60f;
+
+		if (otherUnit instanceof UnitHourVO)
+			return 1f / 60;
+		
 		return null;
 	}
 
@@ -47,4 +49,6 @@ public class UnitMinuteVO implements Unit {
 	}
 
 	public static final Unit instance = new UnitMinuteVO();
+
+	private static final long serialVersionUID = 1L;
 }

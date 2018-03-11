@@ -37,7 +37,6 @@ public class UnitDayVO implements Unit {
 	}
 
 	public static final Unit instance = new UnitDayVO();
-	
-	
-	
+
+	private static final long serialVersionUID = 1L;
 }

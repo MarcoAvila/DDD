@@ -61,5 +61,7 @@ public class UnitCentimeterVO implements Unit {
 	
 	
 	
-	
+
+
+	private static final long serialVersionUID = 1L;
 }

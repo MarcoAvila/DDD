@@ -54,4 +54,6 @@ public class UnitLiterVO implements Unit {
 	
 	
 
+
+	private static final long serialVersionUID = 1L;
 }

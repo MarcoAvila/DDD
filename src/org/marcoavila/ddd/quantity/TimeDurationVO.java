@@ -4,6 +4,8 @@ import org.marcoavila.ddd.quantity.unit.Unit;
 import org.marcoavila.ddd.quantity.unit.UnitDayVO;
 import org.marcoavila.ddd.quantity.unit.UnitHourVO;
 import org.marcoavila.ddd.quantity.unit.UnitMeasurement;
+import org.marcoavila.ddd.quantity.unit.UnitMinuteVO;
+import org.marcoavila.ddd.quantity.unit.UnitSecondVO;
 import org.marcoavila.ddd.quantity.unit.UnitWeekVO;
 
 public class TimeDurationVO extends QuantityVO {
@@ -12,7 +14,7 @@ public class TimeDurationVO extends QuantityVO {
 		super(amount, unit);		
 		
 		if (unit.unitMeasurement() != UnitMeasurement.TIME)
-			throw new IllegalArgumentException("Invalid unit for weight!");
+			throw new IllegalArgumentException("Invalid unit for time duration!");
 	}
 
 	
@@ -40,6 +42,21 @@ public class TimeDurationVO extends QuantityVO {
 	}
 	
 	
+
+	
+	
+	public static TimeDurationVO forMinutes(Float amount) {		
+		return new TimeDurationVO(amount, UnitMinuteVO.instance);
+	}
+	
+	
+	
+
+	
+	
+	public static TimeDurationVO forSeconds(Float amount) {		
+		return new TimeDurationVO(amount, UnitSecondVO.instance);
+	}
 	
 	
 

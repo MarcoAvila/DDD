@@ -60,5 +60,7 @@ public class UnitKilogramVO implements Unit {
 	
 	
 	
-	
+
+
+	private static final long serialVersionUID = 1L;
 }

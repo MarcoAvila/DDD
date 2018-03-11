@@ -56,5 +56,6 @@ public class UnitMeterVO implements Unit {
 	}
 
 	public static final Unit instance = new UnitMeterVO();
-	
+
+	private static final long serialVersionUID = 1L;
 }
