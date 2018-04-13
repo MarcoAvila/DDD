@@ -3,6 +3,7 @@ package org.marcoavila.ddd.util;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 /**
  * 
@@ -368,6 +369,13 @@ public class DatesUtil {
    
    
    
+    
+    
+    
+    
+    
+    
+    
    
 
 
@@ -376,11 +384,58 @@ public class DatesUtil {
         long dateTime = date.getTimeInMillis() / DAY_DURATION;
       
         long todayTime = now().getTimeInMillis() / DAY_DURATION;
+        
+        int timeZoneOffSet = TimeZone.getDefault().getRawOffset();
+        
+        dateTime -= timeZoneOffSet;
+        todayTime -= timeZoneOffSet;
       
         return (int)(todayTime - dateTime);
     }
    
    
+    
+    
+    
+
+
+
+    public static int truncatedDaysBetween(Calendar date1, Calendar date2) {
+      
+        long date1Time = date1.getTimeInMillis() / DAY_DURATION;
+      
+        long date2Time = date2.getTimeInMillis() / DAY_DURATION;
+
+        int timeZoneOffSet = TimeZone.getDefault().getRawOffset();
+        
+        date1Time -= timeZoneOffSet;
+        date2Time -= timeZoneOffSet;
+      
+        return (int)(date2Time - date1Time);
+    }
+   
+   
+   
+
+   
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
    
 
    

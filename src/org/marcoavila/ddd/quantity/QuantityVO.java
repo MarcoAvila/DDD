@@ -1,9 +1,7 @@
 package org.marcoavila.ddd.quantity;
 
 import org.marcoavila.ddd.AbstractValueObject;
-import org.marcoavila.ddd.quantity.unit.GenericUnit;
 import org.marcoavila.ddd.quantity.unit.Unit;
-import org.marcoavila.ddd.quantity.unit.UnitMeasurement;
 import org.marcoavila.ddd.quantity.unit.Units;
 import org.marcoavila.ddd.util.StringsUtil;
 
@@ -123,15 +121,50 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 	
 	
 	
+	
+	
+	
+	
 	public final String display() {
+						
+		return displayAmount() + unit.code();
+	}
+
+	
+		
+	
+	
+	public final String displayDescription() {
+						
+		return displayAmount() + " " + unit.description();
+	}
+
+	
+	
+
+	
+	
+	public final String displayAmount() {
 				
 		String amountString = ( (double)amount == Math.floor( (double)amount) ?
 				String.valueOf( (int)amount) : 
 				String.valueOf(  amount) );
 		
-		return amountString + unit.code();
+		return amountString;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -158,6 +191,9 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 	
 
 
+	
+	
+	
 
 
 	public final float getAmount() {
@@ -171,6 +207,16 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 
 
 
+
+	public final Unit unit() {
+		return unit;
+	}
+
+	
+	
+	
+	
+	
 	
 	
 	
