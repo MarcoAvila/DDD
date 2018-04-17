@@ -19,7 +19,8 @@ public class Units {
 		UnitDayVO.instance,
 		UnitWeekVO.instance,
 		
-		UnitLiterVO.instance
+		UnitLiterVO.instance,
+		UnitMilliliterVO.instance
 	};
 	
 	

@@ -4,11 +4,11 @@ package org.marcoavila.ddd.quantity.unit;
  * 
  * @author Marco Avila
  */
-public class UnitLiterVO implements Unit {
+public class UnitMilliliterVO implements Unit {
 
-	public static final UnitLiterVO instance = new UnitLiterVO();
+	public static final UnitMilliliterVO instance = new UnitMilliliterVO();
 	
-	private UnitLiterVO() {
+	private UnitMilliliterVO() {
 		
 	}
 
@@ -19,7 +19,7 @@ public class UnitLiterVO implements Unit {
 	@Override
 	public String code() {
 
-		return "L";
+		return "ml";
 	}
 
 	
@@ -29,7 +29,7 @@ public class UnitLiterVO implements Unit {
 	@Override
 	public String description() {
 
-		return "liters";
+		return "milliliters";
 	}
 
 
@@ -46,8 +46,8 @@ public class UnitLiterVO implements Unit {
 	@Override
 	public Float ratioFor(Unit otherUnit) {
 
-		if (otherUnit instanceof UnitMilliliterVO)
-			return 1000f;
+		if (otherUnit instanceof UnitLiterVO)
+			return 1f/1000;
 		
 		return null;
 	}

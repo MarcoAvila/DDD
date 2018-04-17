@@ -380,16 +380,15 @@ public class DatesUtil {
 
 
     public static int truncatedDaysCountSince(Calendar date) {
-      
-        long dateTime = date.getTimeInMillis() / DAY_DURATION;
-      
-        long todayTime = now().getTimeInMillis() / DAY_DURATION;
-        
+
         int timeZoneOffSet = TimeZone.getDefault().getRawOffset();
         
-        dateTime -= timeZoneOffSet;
-        todayTime -= timeZoneOffSet;
+        long dateTime = (date.getTimeInMillis() + timeZoneOffSet) / 
+        		DAY_DURATION;
       
+        long todayTime = (now().getTimeInMillis() + timeZoneOffSet) / 
+        		DAY_DURATION;
+              
         return (int)(todayTime - dateTime);
     }
    
@@ -401,15 +400,14 @@ public class DatesUtil {
 
 
     public static int truncatedDaysBetween(Calendar date1, Calendar date2) {
-      
-        long date1Time = date1.getTimeInMillis() / DAY_DURATION;
-      
-        long date2Time = date2.getTimeInMillis() / DAY_DURATION;
 
         int timeZoneOffSet = TimeZone.getDefault().getRawOffset();
         
-        date1Time -= timeZoneOffSet;
-        date2Time -= timeZoneOffSet;
+        long date1Time = (date1.getTimeInMillis() + timeZoneOffSet) /
+        		DAY_DURATION;
+      
+        long date2Time = (date2.getTimeInMillis() + timeZoneOffSet) / 
+        		DAY_DURATION;
       
         return (int)(date2Time - date1Time);
     }

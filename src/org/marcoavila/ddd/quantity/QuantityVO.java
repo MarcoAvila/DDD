@@ -5,6 +5,8 @@ import org.marcoavila.ddd.quantity.unit.Unit;
 import org.marcoavila.ddd.quantity.unit.Units;
 import org.marcoavila.ddd.util.StringsUtil;
 
+import sun.dc.pr.Rasterizer;
+
 /**
  * 
  * @author Marco Avila
@@ -81,6 +83,35 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 	
 	
 	
+
+	
+	
+	public QuantityVO plus(QuantityVO other) {
+
+		if (!unit.unitMeasurement().equals( other.unit().unitMeasurement()))
+			throw new IllegalArgumentException("Incompatible unit! " +
+												unit.description() + "  and " + other.unit().description());
+		
+		float newAmount = this.amount;
+		
+		float delta = other.getAmount();
+		
+		if (!unit.code().equals(other.unit().code() )) {
+			
+			Float ratio = unit.ratioFor( other.unit() ); 
+			
+			if (ratio == null)
+				throw new IllegalArgumentException("No defined ratio! " +
+					unit.description() + "  and " + other.unit().description());
+			
+			delta *= ratio;		
+		}
+				
+		newAmount += delta;
+		
+		return new QuantityVO(newAmount, unit);
+	}
+		
 	
 	
 	
@@ -88,8 +119,12 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 	
 	
 	
+
 	
-	
+	public QuantityVO minus(QuantityVO other) {
+		
+		return plus( new QuantityVO( -other.getAmount() , other.unit()) );
+	}
 	
 	
 	
@@ -230,7 +265,7 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 		if (unit == null) {
 			if (other.unit != null)
 				return false;
-		} else if (!unit.equals(other.unit))
+		} else if (!unit.code().equals(other.unit.code()))
 			return false;
 		return true;
 	}
