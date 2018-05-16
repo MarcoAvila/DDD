@@ -14,6 +14,10 @@ public enum UnitMeasurement {
 	
 	TIME,
 	
+	TEMPERATURE,
+	
+	PERCENTAGE,
+	
 	ANY;
 	
 }

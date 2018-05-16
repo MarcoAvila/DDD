@@ -20,7 +20,11 @@ public class Units {
 		UnitWeekVO.instance,
 		
 		UnitLiterVO.instance,
-		UnitMilliliterVO.instance
+		UnitMilliliterVO.instance,
+		
+		UnitCelsiusVO.instance,
+		
+		UnitPercentageVO.instance
 	};
 	
 	
