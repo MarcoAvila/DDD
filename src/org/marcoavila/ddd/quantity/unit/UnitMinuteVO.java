@@ -31,18 +31,35 @@ public class UnitMinuteVO implements Unit {
 	
 	
 	
+	
+	
+	
+
+
 	@Override
-	public Float ratioFor(Unit otherUnit) {
+	public float convertTo(float amount, Unit targetUnit) {
 
-		if (otherUnit instanceof UnitSecondVO)
-			return 60f;
+		if (targetUnit instanceof UnitSecondVO)
+			return amount * 60f;
 
-		if (otherUnit instanceof UnitHourVO)
-			return 1f / 60;
+		if (targetUnit instanceof UnitHourVO)
+			return amount / 60f;
 		
-		return null;
+		return amount;
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private UnitMinuteVO() {
 

@@ -42,15 +42,16 @@ public class UnitLiterVO implements Unit {
 	}
 	
 
-
+	
 	@Override
-	public Float ratioFor(Unit otherUnit) {
+	public float convertTo(float amount, Unit targetUnit) {
 
-		if (otherUnit instanceof UnitMilliliterVO)
-			return 1000f;
+		if (targetUnit instanceof UnitMilliliterVO)
+			return amount * 1000f;
 		
-		return null;
+		return amount;
 	}
+	
 	
 	
 	

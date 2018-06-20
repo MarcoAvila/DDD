@@ -37,16 +37,25 @@ public class UnitMeterVO implements Unit {
 		return UnitMeasurement.DISTANCE;
 	}
 	
+		
 	
 
 	@Override
-	public Float ratioFor(Unit otherUnit) {
+	public float convertTo(float amount, Unit targetUnit) {
+
+		if (targetUnit instanceof UnitCentimeterVO)
+			return amount * 100f;
 		
-		if (otherUnit instanceof UnitCentimeterVO)
-			return 100f;
-		
-		return null;
+		return amount;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	

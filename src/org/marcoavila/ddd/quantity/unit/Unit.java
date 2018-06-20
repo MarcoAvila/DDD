@@ -14,6 +14,10 @@ public interface Unit extends Serializable {
 	
 	public UnitMeasurement unitMeasurement();
 	
-	public Float ratioFor(Unit otherUnit);
+	//Tirar esse método e impl o abaichooooooo, bíacho
+	//public Float ratioFor(Unit otherUnit);
+	
+	//Para Celsius <-> Farenheit TODO IMPL!!!!
+	public float convertTo(float amount, Unit targetUnit);
 	
 }

@@ -33,20 +33,34 @@ public class UnitSecondVO implements Unit {
 		return UnitMeasurement.TIME;
 	}
 	
-	
-	
-	@Override
-	public Float ratioFor(Unit otherUnit) {
-
-		if (otherUnit instanceof UnitMinuteVO)
-			return 1f / 60;
-
-		if (otherUnit instanceof UnitHourVO)
-			return 1f / 3600;
 		
-		return null;
-	}
+	
+	
 
+
+	@Override
+	public float convertTo(float amount, Unit targetUnit) {
+
+		if (targetUnit instanceof UnitMinuteVO)
+			return amount / 60f;
+
+		if (targetUnit instanceof UnitHourVO)
+			return amount / 3600f;
+		
+		return amount;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private UnitSecondVO() {
 

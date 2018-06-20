@@ -21,8 +21,12 @@ public class Units {
 		
 		UnitLiterVO.instance,
 		UnitMilliliterVO.instance,
+
+		UnitGallonUsVO.instance,
+		UnitGallonUkVO.instance,
 		
 		UnitCelsiusVO.instance,
+		UnitFahrenheitVO.instance,
 		
 		UnitPercentageVO.instance
 	};

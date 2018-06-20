@@ -46,16 +46,20 @@ public class UnitGramVO implements Unit {
 	
 	
 	
+		
 	
 
+	
 	@Override
-	public Float ratioFor(Unit otherUnit) {
+	public float convertTo(float amount, Unit targetUnit) {
+
+		if (targetUnit instanceof UnitKilogramVO)
+			return amount / 100f;
 		
-		if (otherUnit instanceof UnitKilogramVO)
-			return 1f / 100;
-		
-		return null;
+		return amount;
 	}
+	
+	
 	
 	
 	

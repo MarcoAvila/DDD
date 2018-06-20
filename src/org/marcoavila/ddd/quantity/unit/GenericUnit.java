@@ -1,8 +1,5 @@
 package org.marcoavila.ddd.quantity.unit;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class GenericUnit implements Unit {
 
 	private final String code;
@@ -11,14 +8,14 @@ public class GenericUnit implements Unit {
 	
 	private final UnitMeasurement unitMeasurement;
 	
-	private Map<Unit, Float> ratioMap;
+	//private Map<Unit, Float> ratioMap;
 	
 	
 	public GenericUnit(String code, String description, UnitMeasurement unitMeasurement) {
 		this.code = code;
 		this.description = description;
 		this.unitMeasurement = unitMeasurement;
-		this.ratioMap = new HashMap<>();
+		//this.ratioMap = new HashMap<>();
 	}
 
 
@@ -28,12 +25,12 @@ public class GenericUnit implements Unit {
 	
 	
 	
-	
+	/*
 	public void addConversionRatio(Unit unit, Float ratio) {
 		
 		ratioMap.put(unit, ratio);
 	}
-	
+	*/
 	
 	
 	
@@ -76,13 +73,9 @@ public class GenericUnit implements Unit {
 	
 	
 	@Override
-	public Float ratioFor(Unit otherUnit) {
+	public float convertTo(float amount, Unit targetUnit) {
 		
-		for (Unit unit : ratioMap.keySet())
-			if (unit.equals(otherUnit))
-				return ratioMap.get(unit);
-		
-		return null;
+		return amount;
 	}
 	
 	

@@ -521,6 +521,23 @@ public class DatesUtil {
    
    
    
+
+
+    
+    
+    public static Calendar calendarFor(Long time) {
+
+    	if (time == null)
+    		return null;
+    	
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(time);
+		
+        return calendar;
+    }
+   
+   
+   
    
    
    

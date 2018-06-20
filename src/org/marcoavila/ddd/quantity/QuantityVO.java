@@ -5,8 +5,6 @@ import org.marcoavila.ddd.quantity.unit.Unit;
 import org.marcoavila.ddd.quantity.unit.Units;
 import org.marcoavila.ddd.util.StringsUtil;
 
-import sun.dc.pr.Rasterizer;
-
 /**
  * 
  * @author Marco Avila
@@ -92,24 +90,16 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 			throw new IllegalArgumentException("Incompatible unit! " +
 												unit.description() + "  and " + other.unit().description());
 		
-		float newAmount = this.amount;
+		float plusAmount = this.amount;
 		
-		float delta = other.getAmount();
+		float otherAmount = other.getAmount();
 		
-		if (!unit.code().equals(other.unit().code() )) {
-			
-			Float ratio = unit.ratioFor( other.unit() ); 
-			
-			if (ratio == null)
-				throw new IllegalArgumentException("No defined ratio! " +
-					unit.description() + "  and " + other.unit().description());
-			
-			delta *= ratio;		
-		}
-				
-		newAmount += delta;
+		if (!unit.code().equals(other.unit().code() )) 
+			otherAmount = unit.convertTo(otherAmount, other.unit());
+						
+		plusAmount += otherAmount;
 		
-		return new QuantityVO(newAmount, unit);
+		return new QuantityVO(plusAmount, unit);
 	}
 		
 	
@@ -131,6 +121,11 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 	
 	
 	
+	
+	
+	
+	
+	
 	public QuantityVO convertTo(Unit targetUnit) {
 		
 		if (unit.unitMeasurement() == targetUnit.unitMeasurement() &&
@@ -141,9 +136,9 @@ public class QuantityVO extends AbstractValueObject<QuantityVO> {
 			throw new IllegalArgumentException("Attempt to convert to an incompatible unit! From " +
 												unit.description() + " to " + targetUnit.description());
 		
-		float ratio = unit.ratioFor(targetUnit);
+		float convertedAmount = unit.convertTo(amount, targetUnit);
 		
-		return new QuantityVO(amount * ratio, targetUnit);
+		return new QuantityVO(convertedAmount, targetUnit);
 	}
 	
 	

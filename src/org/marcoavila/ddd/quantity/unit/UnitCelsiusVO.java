@@ -14,7 +14,7 @@ public class UnitCelsiusVO implements Unit {
 	@Override
 	public String code() {
 
-		return "°";
+		return "°C";
 	}
 
 	
@@ -30,6 +30,7 @@ public class UnitCelsiusVO implements Unit {
 
 	
 
+	
 
 	@Override
 	public UnitMeasurement unitMeasurement() {
@@ -38,17 +39,32 @@ public class UnitCelsiusVO implements Unit {
 	}
 	
 	
-
-	@Override
-	public Float ratioFor(Unit otherUnit) {
-		
-		//if (otherUnit instanceof UnitCentimeterVO)
-			//return 100f;
-		
-		return null;
-	}
+	
+	
 	
 
+	
+	@Override
+	public float convertTo(float amount, Unit targetUnit) {
+
+		if (targetUnit instanceof UnitFahrenheitVO)
+			return amount * (9f / 5f) + 32f;
+		
+		return amount;
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	private UnitCelsiusVO() {

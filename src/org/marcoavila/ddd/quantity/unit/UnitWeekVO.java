@@ -22,13 +22,28 @@ public class UnitWeekVO implements Unit{
 		return UnitMeasurement.TIME;
 	}
 	
-	@Override
-	public Float ratioFor(Unit otherUnit) {
-		if (otherUnit instanceof UnitDayVO)
-			return 7f;
-		return null;
-	}
+	
+	
 
+	
+	@Override
+	public float convertTo(float amount, Unit targetUnit) {
+
+		if (targetUnit instanceof UnitDayVO)
+			return amount * 7f;
+		
+		return amount;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private UnitWeekVO() {
 

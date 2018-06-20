@@ -4,14 +4,9 @@ package org.marcoavila.ddd.quantity.unit;
  * 
  * @author Marco Avila
  */
-public class UnitCentimeterVO implements Unit {
+public class UnitFahrenheitVO implements Unit {
 
-	public static final UnitCentimeterVO instance = new UnitCentimeterVO();
 	
-	private UnitCentimeterVO() {
-		
-	}
-
 	
 	
 	
@@ -19,9 +14,10 @@ public class UnitCentimeterVO implements Unit {
 	@Override
 	public String code() {
 
-		return "cm";
+		return "°F";
 	}
 
+	
 	
 	
 	
@@ -29,34 +25,26 @@ public class UnitCentimeterVO implements Unit {
 	@Override
 	public String description() {
 
-		return "centimeters";
+		return "Fahrenheit";
 	}
 
 	
-	
-	
-	
-	
-	
+
 
 	@Override
 	public UnitMeasurement unitMeasurement() {
 		
-		return UnitMeasurement.DISTANCE;
+		return UnitMeasurement.TEMPERATURE;
 	}
 	
 	
-	
-	
-	
-	
 
-	
+
 	@Override
 	public float convertTo(float amount, Unit targetUnit) {
 
-		if (targetUnit instanceof UnitMeterVO)
-			return amount / 100f;
+		if (targetUnit instanceof UnitCelsiusVO)
+			return (amount - 32f) / (9f / 5f);
 		
 		return amount;
 	}
@@ -64,19 +52,21 @@ public class UnitCentimeterVO implements Unit {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private UnitFahrenheitVO() {
+
+	}
+
+	public static final Unit instance = new UnitFahrenheitVO();
 
 	private static final long serialVersionUID = 1L;
 }

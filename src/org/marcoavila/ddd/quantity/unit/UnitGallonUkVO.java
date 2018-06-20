@@ -4,11 +4,11 @@ package org.marcoavila.ddd.quantity.unit;
  * 
  * @author Marco Avila
  */
-public class UnitCentimeterVO implements Unit {
+public class UnitGallonUkVO implements Unit {
 
-	public static final UnitCentimeterVO instance = new UnitCentimeterVO();
+	public static final UnitGallonUkVO instance = new UnitGallonUkVO();
 	
-	private UnitCentimeterVO() {
+	private UnitGallonUkVO() {
 		
 	}
 
@@ -19,7 +19,7 @@ public class UnitCentimeterVO implements Unit {
 	@Override
 	public String code() {
 
-		return "cm";
+		return "gal";
 	}
 
 	
@@ -29,47 +29,28 @@ public class UnitCentimeterVO implements Unit {
 	@Override
 	public String description() {
 
-		return "centimeters";
+		return "gallon (UK)";
 	}
 
-	
-	
-	
-	
-	
-	
+
+
 
 	@Override
 	public UnitMeasurement unitMeasurement() {
 		
-		return UnitMeasurement.DISTANCE;
+		return UnitMeasurement.VOLUME;
 	}
-	
-	
-	
-	
-	
 	
 
 	
 	@Override
 	public float convertTo(float amount, Unit targetUnit) {
 
-		if (targetUnit instanceof UnitMeterVO)
-			return amount / 100f;
+		//if (targetUnit instanceof UnitMilliliterVO)
+			//return amount * 1000f;
 		
 		return amount;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

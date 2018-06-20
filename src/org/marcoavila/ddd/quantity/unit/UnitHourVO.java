@@ -32,18 +32,40 @@ public class UnitHourVO implements Unit {
 		return UnitMeasurement.TIME;
 	}
 	
+	
+	
+
+	
+
+
 	@Override
-	public Float ratioFor(Unit otherUnit) {
+	public float convertTo(float amount, Unit targetUnit) {
 
-		if (otherUnit instanceof UnitMinuteVO)
-			return 60f;
+		if (targetUnit instanceof UnitMinuteVO)
+			return amount * 60f;
 
-		if (otherUnit instanceof UnitSecondVO)
-			return 3600f;
+		if (targetUnit instanceof UnitSecondVO)
+			return amount * 3600f;
 		
-		return null;
+		return amount;
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	private static final long serialVersionUID = 1L;
 }

@@ -39,14 +39,15 @@ public class UnitPercentageVO implements Unit {
 	
 	
 
+
 	@Override
-	public Float ratioFor(Unit otherUnit) {
-		
-		//if (otherUnit instanceof UnitCentimeterVO)
-			//return 100f;
-		
-		return null;
+	public float convertTo(float amount, Unit targetUnit) {
+
+		return amount;
 	}
+	
+	
+	
 	
 
 	
