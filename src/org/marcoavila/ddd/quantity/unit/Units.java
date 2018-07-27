@@ -27,6 +27,10 @@ public class Units {
 		
 		UnitCelsiusVO.instance,
 		UnitFahrenheitVO.instance,
+
+		UnitWattVO.instance,
+		
+		UnitLumenVO.instance,
 		
 		UnitPercentageVO.instance
 	};

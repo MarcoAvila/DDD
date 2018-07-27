@@ -18,6 +18,10 @@ public enum UnitMeasurement {
 	
 	PERCENTAGE,
 	
+	POWER,
+	
+	LUMINOUS_FLUX,
+	
 	ANY;
 	
 }

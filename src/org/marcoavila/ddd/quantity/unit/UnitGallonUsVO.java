@@ -43,11 +43,28 @@ public class UnitGallonUsVO implements Unit {
 	
 
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	The US gallon is used in the United States and is equal to 
+	exactly 231 cubic inches or 3.785411784 liters.
+	 */
+	
 	@Override
 	public float convertTo(float amount, Unit targetUnit) {
 
-		//if (targetUnit instanceof UnitMilliliterVO)
-			//return amount * 1000f;
+		if (targetUnit instanceof UnitLiterVO)
+			return amount * 3.785411784f;
+
+		if (targetUnit instanceof UnitGallonUkVO)
+			return amount / 1.2f;
 		
 		return amount;
 	}
