@@ -50,10 +50,10 @@ public class UnitLiterVO implements Unit {
 			return amount * 1000f;
 
 		if (targetUnit instanceof UnitGallonUsVO)
-			return amount * (1 / 3.785411784f);
+			return amount / 3.785411784f;
 
 		if (targetUnit instanceof UnitGallonUkVO)
-			return amount * (1 / 4.54609f);
+			return amount / 4.54609f;
 		
 		return amount;
 	}

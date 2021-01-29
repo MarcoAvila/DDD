@@ -369,6 +369,30 @@ public class DatesUtil {
    
    
    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    public static int daysCountBetween(Calendar date1, Calendar date2) {
+      
+        long time1 = date1.getTimeInMillis();
+      
+        long time2 = date2.getTimeInMillis();
+      
+        long count = (time2 - time1) / DAY_DURATION;
+      
+        return Long.valueOf(count).intValue();
+    }
+   
+   
+   
+   
     
     
     
